@@ -17,13 +17,13 @@ public class UserComponent implements CommandLineRunner {
     private UserRepository userRepository;
 
     @Override
-    public void run(String... strings) throws Exception {
+    public void run(String... strings) {
         this.userRepository.deleteAll();
 
         List<User> users = Arrays.asList(
                 new User("User", "1234", "Park", "USER",
                         new Status(true, true, true, true)),
-                new User("ADMIN", "1234", "Suck", "ADMIN",
+                new User("Admin", "1234", "Suck", "ADMIN",
                         new Status(true, true, true, true))
         );
         this.userRepository.save(users);

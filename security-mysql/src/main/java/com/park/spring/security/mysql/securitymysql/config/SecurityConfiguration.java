@@ -33,12 +33,17 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/rest/public").permitAll()
                 .antMatchers("rest/home").fullyAuthenticated()
-                .antMatchers("/rest/user").hasRole("USER")
-                .antMatchers("/rest/admin").hasRole("ADMIN")
-                .anyRequest().permitAll()
-                .and().formLogin().permitAll();
-        http.csrf().disable();
-
+                .antMatchers("/rest/user").authenticated()
+                .antMatchers("/rest/admin").authenticated()
+                .and()
+                .formLogin()
+                //.loginPage("/***.html")
+                .loginProcessingUrl("/login")
+                .defaultSuccessUrl("/rest/profile")
+                .failureUrl("/rest/fail")
+                .and()
+                .logout().logoutSuccessUrl("/rest/home")
+                .permitAll();
     }
 
     private PasswordEncoder getPasswordEncoder() {

@@ -17,7 +17,7 @@ public class HomeController {
     @PreAuthorize("hasAnyRole('ADMIN','USER')")
     @GetMapping("/profile")
     public String profile() {
-        return "Home Secured";
+        return "Profile Secured";
     }
 
     @PreAuthorize("hasAnyRole('USER')")

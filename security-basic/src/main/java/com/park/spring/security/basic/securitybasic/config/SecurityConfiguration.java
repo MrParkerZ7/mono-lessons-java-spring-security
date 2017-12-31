@@ -23,13 +23,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
-        httpSecurity.antMatcher("/rest/**")
+        httpSecurity
                 .authorizeRequests()
                 .antMatchers("/rest/user").hasRole("USER") //allow only roles
                 .antMatchers("/rest/admin").hasRole("ADMIN")
                 .antMatchers("/rest/home").fullyAuthenticated() //allow any roles
-                .antMatchers("/rest/public").permitAll(); // allow everyone
-
+                .antMatchers("/rest/public").permitAll() // allow everyone
+                .and().httpBasic();
 
     }
 }
