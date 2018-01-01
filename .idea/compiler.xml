@@ -7,11 +7,13 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="security-basic" />
+        <module name="security-jwt" />
         <module name="security-mysql" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="security-basic" target="1.8" />
+      <module name="security-jwt" target="1.8" />
       <module name="security-mysql" target="1.8" />
     </bytecodeTargetLevel>
   </component>

@@ -5,6 +5,7 @@
       <list>
         <option value="$PROJECT_DIR$/security-basic/pom.xml" />
         <option value="$PROJECT_DIR$/security-mysql/pom.xml" />
+        <option value="$PROJECT_DIR$/security-jwt/pom.xml" />
       </list>
     </option>
   </component>
