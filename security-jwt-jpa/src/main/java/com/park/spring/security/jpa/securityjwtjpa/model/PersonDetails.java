@@ -5,15 +5,21 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.stream.Collectors;
 
 public class PersonDetails extends Person implements UserDetails {
 
-    PersonDetails(final Person person) {
-        super(person);
-    }
+    private String token; // It never use why ?
 
-    private String token;
+    public PersonDetails(String token, Integer id, String username, String password, Status status, List<String> grantedAuthorities) {
+        this.token = token;
+        super.setId(id);
+        super.setUsername(username);
+        super.setPassword(password);
+        super.setStatus(status);
+        super.setRole(grantedAuthorities);
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -34,21 +40,21 @@ public class PersonDetails extends Person implements UserDetails {
 
     @Override
     public boolean isAccountNonExpired() {
-        return false;
+        return super.getStatus().isAccountNonExpired();
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return false;
+        return super.getStatus().isAccountNonLocked();
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return false;
+        return super.getStatus().isCredentialsNonExpired();
     }
 
     @Override
     public boolean isEnabled() {
-        return false;
+        return super.getStatus().isEnabled();
     }
 }

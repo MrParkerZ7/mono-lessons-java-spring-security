@@ -30,6 +30,7 @@ public class JwtSecurityConfig extends WebSecurityConfigurerAdapter {
     private JwtAuthenticationEntryPoint entryPoint;
 
     @Bean
+    @Override
     public AuthenticationManager authenticationManager() {
         return new ProviderManager(Collections.singletonList(authenticationProvider));
     }
