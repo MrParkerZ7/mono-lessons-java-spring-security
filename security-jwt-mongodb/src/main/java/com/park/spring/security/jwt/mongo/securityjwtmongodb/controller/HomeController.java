@@ -16,15 +16,7 @@ import javax.annotation.security.PermitAll;
 @RequestMapping("/rest")
 public class HomeController {
 
-    @Autowired
-    private PersonRepository personRepository;
-
-    @PermitAll
-    @GetMapping("/{username}")
-    public Person getPersonByUsername(@PathVariable("username") final String username) {
-        return personRepository.findByUsername(username);
-    }
-
+    // By default it's ganna be permit all everyone which had role
     @GetMapping("/home")
     public String home() {
         return "Home JWT";
