@@ -32,21 +32,25 @@ public class CustomPersonDetails extends Person implements UserDetails {
 
     @Override
     public boolean isAccountNonExpired() {
-        return super.getStatus().getAccountNonExpired();
+        return true;
+//        return super.getStatus().getAccountNonExpired();
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return super.getStatus().getAccountNonLocked();
+        return true;
+//        return super.getStatus().getAccountNonLocked();
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return super.getStatus().getCredentialsNonExpired();
+        return true;
+//        return super.getStatus().getCredentialsNonExpired();
     }
 
     @Override
     public boolean isEnabled() {
-        return super.getStatus().getEnable();
+        return true;
+//        return super.getStatus().getEnable();
     }
 }

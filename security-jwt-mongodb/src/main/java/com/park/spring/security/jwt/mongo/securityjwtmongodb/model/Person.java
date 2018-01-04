@@ -5,58 +5,11 @@ import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Collection;
+import java.util.Objects;
 
 @Document
 public class Person {
 
-    public class Status {
-        private Boolean isAccountNonExpired;
-        private Boolean isAccountNonLocked;
-        private Boolean isCredentialsNonExpired;
-        private Boolean isEnable;
-
-        public Status() {
-        }
-
-        public Status(Boolean isAccountNonExpired, Boolean isAccountNonLocked, Boolean isCredentialsNonExpired, Boolean isEnable) {
-            this.isAccountNonExpired = isAccountNonExpired;
-            this.isAccountNonLocked = isAccountNonLocked;
-            this.isCredentialsNonExpired = isCredentialsNonExpired;
-            this.isEnable = isEnable;
-        }
-
-        public Boolean getAccountNonExpired() {
-            return isAccountNonExpired;
-        }
-
-        public void setAccountNonExpired(Boolean accountNonExpired) {
-            isAccountNonExpired = accountNonExpired;
-        }
-
-        public Boolean getAccountNonLocked() {
-            return isAccountNonLocked;
-        }
-
-        public void setAccountNonLocked(Boolean accountNonLocked) {
-            isAccountNonLocked = accountNonLocked;
-        }
-
-        public Boolean getCredentialsNonExpired() {
-            return isCredentialsNonExpired;
-        }
-
-        public void setCredentialsNonExpired(Boolean credentialsNonExpired) {
-            isCredentialsNonExpired = credentialsNonExpired;
-        }
-
-        public Boolean getEnable() {
-            return isEnable;
-        }
-
-        public void setEnable(Boolean enable) {
-            isEnable = enable;
-        }
-    }
 
     @Id
     private String id;
@@ -122,5 +75,34 @@ public class Person {
 
     public void setRole(Collection<String> role) {
         this.role = role;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Person person = (Person) o;
+        return Objects.equals(id, person.id) &&
+                Objects.equals(username, person.username) &&
+                Objects.equals(password, person.password) &&
+                Objects.equals(status, person.status) &&
+                Objects.equals(role, person.role);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(id, username, password, status, role);
+    }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "id='" + id + '\'' +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", status=" + status +
+                ", role=" + role +
+                '}';
     }
 }

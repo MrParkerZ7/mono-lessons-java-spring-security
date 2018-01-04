@@ -13,6 +13,7 @@ public class JwtGenerator {
         Claims claims = Jwts.claims().setSubject(person.getUsername());
         claims.put("password",person.getPassword());
         claims.put("id", person.getId());
+        claims.put("status",person.getStatus()); // "status" is object type Student. But, when it generate it back it will become a LinkHashList
         claims.put("role", person.getRole());
 
 
