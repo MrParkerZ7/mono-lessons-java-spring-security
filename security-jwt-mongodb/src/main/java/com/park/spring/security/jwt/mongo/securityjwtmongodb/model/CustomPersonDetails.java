@@ -9,8 +9,15 @@ import java.util.stream.Collectors;
 
 public class CustomPersonDetails extends Person implements UserDetails {
 
+    private Person personClient;
+
     public CustomPersonDetails(Person person) {
         super(person);
+    }
+
+    public CustomPersonDetails(Person personClient, Person personDB) {
+        super(personDB);
+        this.personClient = personClient;
     }
 
     @Override
@@ -22,35 +29,37 @@ public class CustomPersonDetails extends Person implements UserDetails {
 
     @Override
     public String getPassword() {
-        return super.getPassword();
+        if (personClient.getUsername().equals(super.getUsername()))
+            return super.getPassword();
+        else
+            return null;
     }
 
     @Override
     public String getUsername() {
-        return super.getUsername();
+        if (personClient.getPassword().equals(super.getPassword()))
+            return super.getUsername();
+        else
+            return null;
     }
 
     @Override
     public boolean isAccountNonExpired() {
-        return true;
-//        return super.getStatus().getAccountNonExpired();
+        return super.getStatus().getAccountNonExpired();
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return true;
-//        return super.getStatus().getAccountNonLocked();
+        return super.getStatus().getAccountNonLocked();
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return true;
-//        return super.getStatus().getCredentialsNonExpired();
+        return super.getStatus().getCredentialsNonExpired();
     }
 
     @Override
     public boolean isEnabled() {
-        return true;
-//        return super.getStatus().getEnable();
+        return super.getStatus().getEnable();
     }
 }

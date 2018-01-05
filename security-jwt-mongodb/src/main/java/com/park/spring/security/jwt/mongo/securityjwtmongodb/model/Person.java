@@ -10,9 +10,9 @@ import java.util.Objects;
 @Document
 public class Person {
 
-
     @Id
     private String id;
+    @Indexed
     private String username;
     private String password;
     private Status status;

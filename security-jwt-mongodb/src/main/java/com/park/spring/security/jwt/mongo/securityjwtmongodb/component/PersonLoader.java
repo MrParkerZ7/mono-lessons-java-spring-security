@@ -18,20 +18,19 @@ public class PersonLoader implements CommandLineRunner {
 
     @Override
     public void run(String... strings) throws Exception {
-//        personRepository.deleteAll();
+        personRepository.deleteAll();
 
         List<Person> people = Arrays.asList(
-                new Person(null, "User", "1234",
+                new Person("A34N7K34A", "User", "1234",
                         new Status(true, true, true, true),
                         Arrays.asList("USER")),
-                new Person(null, "Admin", "1234",
+                new Person("J5L3IQR42", "Admin", "1234",
                         new Status(true, true, true, true),
                         Arrays.asList("ADMIN")),
-                new Person(null, "Boss", "1234",
+                new Person("P09F34M2K", "Boss", "1234",
                         new Status(true, true, true, true),
                         Arrays.asList("ADMIN", "USER", "BOSS"))
         );
-
-//        personRepository.save(people);
+        personRepository.save(people);
     }
 }

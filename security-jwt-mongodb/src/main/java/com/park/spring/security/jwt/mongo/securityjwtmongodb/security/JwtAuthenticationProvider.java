@@ -1,5 +1,6 @@
 package com.park.spring.security.jwt.mongo.securityjwtmongodb.security;
 
+import com.park.spring.security.jwt.mongo.securityjwtmongodb.PersonRepository.PersonRepository;
 import com.park.spring.security.jwt.mongo.securityjwtmongodb.model.CustomPersonDetails;
 import com.park.spring.security.jwt.mongo.securityjwtmongodb.model.JwtAuthenticationToken;
 import com.park.spring.security.jwt.mongo.securityjwtmongodb.model.Person;
@@ -16,6 +17,9 @@ public class JwtAuthenticationProvider extends AbstractUserDetailsAuthentication
     @Autowired
     private JwtValidator validator;
 
+    @Autowired
+    private PersonRepository personRepository;
+
     @Override
     protected void additionalAuthenticationChecks(UserDetails userDetails, UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken) throws AuthenticationException {
 
@@ -27,13 +31,14 @@ public class JwtAuthenticationProvider extends AbstractUserDetailsAuthentication
         JwtAuthenticationToken jwtAuthenticationToken = (JwtAuthenticationToken) usernamePasswordAuthenticationToken;
         String token = jwtAuthenticationToken.getToken();
 
-        Person person = validator.validate(token);
+        Person personClient = validator.validate(token);
+        Person personDB = personRepository.findByUsername(personClient.getUsername());
 
-        if (person == null) {
+        if (personClient == null) {
             throw new RuntimeException("JWT Token is incorrect");
         }
 
-        return new CustomPersonDetails(person);
+        return new CustomPersonDetails(personClient,personDB);
     }
 
     @Override

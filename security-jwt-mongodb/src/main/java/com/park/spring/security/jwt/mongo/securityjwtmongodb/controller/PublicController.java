@@ -12,7 +12,7 @@ import javax.annotation.security.PermitAll;
 
 @RestController
 @RequestMapping("/public")
-public class GetController {
+public class PublicController {
 
     @Autowired
     private PersonRepository personRepository;
