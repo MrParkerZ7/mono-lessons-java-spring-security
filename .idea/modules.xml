@@ -7,6 +7,9 @@
       <module fileurl="file://$PROJECT_DIR$/security-jwt-mongodb/security-jwt-mongodb.iml" filepath="$PROJECT_DIR$/security-jwt-mongodb/security-jwt-mongodb.iml" />
       <module fileurl="file://$PROJECT_DIR$/security-mongodb/security-mongodb.iml" filepath="$PROJECT_DIR$/security-mongodb/security-mongodb.iml" />
       <module fileurl="file://$PROJECT_DIR$/security-mysql/security-mysql.iml" filepath="$PROJECT_DIR$/security-mysql/security-mysql.iml" />
+      <module fileurl="file://$PROJECT_DIR$/security-oauth-client/security-oauth-client.iml" filepath="$PROJECT_DIR$/security-oauth-client/security-oauth-client.iml" />
+      <module fileurl="file://$PROJECT_DIR$/security-oauth-server/security-oauth-server.iml" filepath="$PROJECT_DIR$/security-oauth-server/security-oauth-server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/security-oauth-server-mongodb/security-oauth-server-mongodb.iml" filepath="$PROJECT_DIR$/security-oauth-server-mongodb/security-oauth-server-mongodb.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring-security.iml" filepath="$PROJECT_DIR$/spring-security.iml" />
     </modules>
   </component>

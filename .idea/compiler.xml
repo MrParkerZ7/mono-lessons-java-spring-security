@@ -11,6 +11,9 @@
         <module name="security-jwt-mongodb" />
         <module name="security-mongodb" />
         <module name="security-mysql" />
+        <module name="security-oauth-client" />
+        <module name="security-oauth-server" />
+        <module name="security-oauth-server-mongodb" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -20,6 +23,9 @@
       <module name="security-jwt-mongodb" target="1.8" />
       <module name="security-mongodb" target="1.8" />
       <module name="security-mysql" target="1.8" />
+      <module name="security-oauth-client" target="1.8" />
+      <module name="security-oauth-server" target="1.8" />
+      <module name="security-oauth-server-mongodb" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
